@@ -4,5 +4,9 @@ Hi! My name is Annabelle Ford, and I am an undergraduate student studying Comput
 Download my resume here!
 [Resume](more-information/resume)
 
+# Scute-Shoot
+This is a 2D Unity game that I worked on as a part of the 2025 DGA Summer Project. Check it out on itch.io!
+[Scute Shoot](https://dgacornell.itch.io/scute-shoot)
+
 # VR Game Code (In Progress)
 [Object Interaction](object-interaction)
