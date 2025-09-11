@@ -1,0 +1,39 @@
+using UnityEditor;
+using UnityEngine;
+
+[CustomEditor(typeof(EnemyVision))]
+
+public class EnemyVisionEditor : Editor
+{
+    private void OnSceneGUI()
+    {
+        EnemyVision enemyVision = (EnemyVision)target;
+        Handles.color = Color.yellow;
+        Handles.DrawWireArc(enemyVision.transform.position, Vector3.up,
+            enemyVision.transform.forward, 360, enemyVision.viewRadius);
+        Vector3 viewingAngleLeft = DirectionFromAngle(enemyVision.
+            transform.eulerAngles.y, -enemyVision.viewAngle / 2);
+        Vector3 viewingAngleRight = DirectionFromAngle(enemyVision.
+            transform.eulerAngles.y, enemyVision.viewAngle / 2);
+
+        Handles.color = Color.blue;
+        Handles.DrawLine(enemyVision.transform.position,
+            enemyVision.transform.position + viewingAngleLeft
+            * enemyVision.viewRadius);
+        Handles.DrawLine(enemyVision.transform.position,
+            enemyVision.transform.position + viewingAngleRight
+            * enemyVision.viewRadius);
+        if (enemyVision.playerVisible && enemyVision.player != null)
+        {
+            Handles.color = Color.green;
+            Handles.DrawLine(enemyVision.transform.position, enemyVision.player.transform.position);
+        }
+    }
+
+    private Vector3 DirectionFromAngle(float eulerY, float angle)
+    {
+        angle += eulerY;
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle
+            * Mathf.Deg2Rad));
+    }
+}
