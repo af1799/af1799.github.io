@@ -10,3 +10,4 @@ This is a 2D Unity game that I worked on as a part of the 2025 DGA Summer Projec
 
 # VR Game Code (In Progress)
 [Object Interaction](https://github.com/af1799/af1799.github.io/tree/main/object-interaction)
+[Enemy Vision (First Draft)](https://github.com/af1799/af1799.github.io/tree/main/enemy-vision-first-draft)
