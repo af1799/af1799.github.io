@@ -1,4 +1,5 @@
 Hi! My name is Annabelle Ford, and I am an undergraduate student studying Computer Science at Cornell University. Check out some of my work below!
+![Video Game Controller](images/controller.png)
 
 # Resume
 Download my resume here!
