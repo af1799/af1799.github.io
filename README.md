@@ -5,9 +5,10 @@ Download my resume here!
 [Resume](more-information/resume)
 
 # Scute-Shoot
-This is a 2D Unity game that I worked on as a part of the 2025 DGA Summer Project. Check it out on itch.io!
+This is a 2D Unity game that I worked on as a part of the 2025 Cornell DGA Summer Project. Check it out on itch.io!
 [Scute Shoot](https://dgacornell.itch.io/scute-shoot)
 
 # VR Game Code (In Progress)
+This is some code from a VR Unity game that I am currently working on as a part of the CUXR Project Team.
 [Object Interaction](https://github.com/af1799/af1799.github.io/tree/main/object-interaction)\
 [Enemy Vision (First Draft)](https://github.com/af1799/af1799.github.io/tree/main/enemy-vision-first-draft)
