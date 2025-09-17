@@ -7,3 +7,7 @@
   color: white;
   text-align: center;
 }
+
+body {
+  background-color: black; /* or #000000 or rgb(0,0,0) */
+}
