@@ -4,10 +4,10 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 50px;
-  color: white;
   text-align: center;
 }
 
 body {
-  background-color: black; /* or #000000 or rgb(0,0,0) */
+  background-color: black;
+  color: white;
 }
