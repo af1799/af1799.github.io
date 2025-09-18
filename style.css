@@ -10,3 +10,12 @@ body {
   background-color: black;
   color: white;
 }
+
+h2 {
+  font-family: 'YourCustomFontName', serif;
+}
+
+@font-face {
+  font-family: 'HeaderFont';
+  src: url('/fonts/sf-atarian-system.regular.ttf') format('truetype');
+}
