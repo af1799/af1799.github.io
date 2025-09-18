@@ -31,3 +31,8 @@ a {
   text-decoration: none;
   color: lightskyblue;
 }
+
+.image-special {
+  border: white;
+  border-width: 3px;
+}
