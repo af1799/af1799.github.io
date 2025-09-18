@@ -53,6 +53,10 @@ nav ul {
   justify-content: center;
 }
 
+.navbar li {
+  display: inline;
+}
+
 .navbar li a {
   display: block;
   color: white;
