@@ -13,6 +13,7 @@ body {
 
 h2 {
   font-family: 'HeaderFont', serif;
+  font-size: 30px;
 }
 
 @font-face {
