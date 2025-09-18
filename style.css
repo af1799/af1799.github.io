@@ -35,4 +35,5 @@ a {
 .image-special {
   border: white;
   border-width: 3px;
+  border-style: solid;
 }
