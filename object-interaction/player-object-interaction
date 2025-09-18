@@ -1,9 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ObjectInteraction : MonoBehaviour
 {
-    // This script is intended to be attached to the player object to allow object interaction with objects implementing the Interactable interace
-
     // Range is a float indicating the range in which the player can interact with an object
     public float range = 3;
 
@@ -11,10 +13,6 @@ public class ObjectInteraction : MonoBehaviour
     private Interactable held = null;
 
     private Collider playerCollider;
-
-    [SerializeField] private float horizontalOffset = 1.1f;
-    [SerializeField] private float verticalOffset = 0.2f;
-    [SerializeField] private float forwardOffset = 1.5f;
 
     void Start()
     {
@@ -36,12 +34,14 @@ public class ObjectInteraction : MonoBehaviour
                 {
                     if (hit.collider.gameObject.TryGetComponent(out Rigidbody rb))
                     {
-                        if (hit.rigidbody.gameObject.TryGetComponent(out Interact interactableObject))
+                        if (hit.rigidbody.gameObject.TryGetComponent(out Holdable interactableObject))
                         // If the object hit has an Interactable component
                         {
-                            interactableObject.Grab(playerCollider, horizontalOffset,
-                                verticalOffset, forwardOffset);
-                            held = interactableObject;
+                            interactableObject.InteractWith();
+                            if (interactableObject.IsHoldable())
+                            {
+                                held = interactableObject;
+                            }
                         }
                     }
                 }
@@ -53,9 +53,9 @@ public class ObjectInteraction : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && held != null)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && held != null && held is Holdable interact)
         {
-            held.Throw();
+            interact.Throw();
             held = null;
         }
     }
