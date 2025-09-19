@@ -1,6 +1,8 @@
 .title-container {
   padding-top: 10px;
   text-align: center;
+  width: 20%;
+  height: auto;
 }
 
 body {
