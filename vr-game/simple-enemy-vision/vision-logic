@@ -1,0 +1,64 @@
+using System.Collections;
+using UnityEngine;
+
+[ExecuteInEditMode]
+public class EnemyVision : MonoBehaviour
+{
+    private WaitForSeconds wait = new WaitForSeconds(0.2f);
+    public float viewRadius = 7f;
+    // Limits viewAngle to between 0-360
+    [Range(0, 360)]
+    public float viewAngle = 90f;
+    public LayerMask target;
+    public LayerMask obstacles;
+    public bool playerVisible;
+    public GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(VisionRoutine());
+    }
+
+    private IEnumerator VisionRoutine()
+    {
+        while (true)
+        {
+            yield return wait;
+            CheckFOV();
+        }
+    }
+
+    void CheckFOV()
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, viewRadius, target);
+        if (rangeChecks.Length != 0)
+        {
+            Transform targetTransform = rangeChecks[0].transform;
+            Vector3 directionToTarget = (targetTransform.position - transform.position).normalized;
+            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, targetTransform.position);
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget,
+                    obstacles))
+                {
+                    playerVisible = true;
+                }
+                else
+                {
+                    playerVisible = false;
+                }
+
+            }
+            else
+            {
+                playerVisible = false;
+            }
+        }
+        else if (playerVisible)
+        {
+            playerVisible = false;
+        }
+    }
+
+}
