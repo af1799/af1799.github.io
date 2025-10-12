@@ -57,7 +57,7 @@ a {
 
 .navbar {
   list-style-type: none;
-  margin: 0;
+  margin-bottom: 20px;
   padding: 0;
   overflow: hidden;
   display: flex; 
