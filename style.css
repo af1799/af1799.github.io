@@ -7,6 +7,17 @@
   margin: 0 auto;
 }
 
+.flex-container {
+  display: flex; /* Makes the container a flex container */
+  gap: 20px; /* Adds space between the two child elements */
+}
+
+.flex-child {
+  flex: 1; /* Allows child elements to grow and shrink */
+  border: 1px solid #ccc; /* Just for visual separation */
+}
+
+
 body {
   background-color: black;
   color: white;
