@@ -73,6 +73,9 @@ a {
   border: white;
   border-width: 3px;
   border-style: solid;
+  text-align: center;
+  max-width: 800px;
+  max-height: 400px;
 }
 
 .navbar {
