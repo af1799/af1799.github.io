@@ -37,6 +37,12 @@
   flex: 1;
 }
 
+.controller-img {
+  width: 300px; /* or whatever size you want */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 body {
   background-color: black;
