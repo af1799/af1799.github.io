@@ -17,16 +17,24 @@
   border: 3px solid white;
 }
 
-.video-container iframe,
-.video-container img {
+.video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image fills the space */
+  object-fit: cover;
   display: block;
 }
+
+.video-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  display: block;
+  position: relative;
+}
+
 
 .flex-container {
   display: flex;
