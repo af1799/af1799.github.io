@@ -51,6 +51,7 @@ h2 {
   font-family: 'HeaderFont', serif;
   font-size: 50px;
   letter-spacing: 2px;
+  line-height: 2px;
 }
 
 @font-face {
