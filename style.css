@@ -40,6 +40,7 @@ body {
   font-family: 'BodyFont', sans-serif;
   font-size: 20px;
   line-height: 150%;
+  padding: 0 40px;
 }
 
 h2 {
