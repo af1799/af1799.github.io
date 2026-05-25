@@ -60,10 +60,12 @@
 
 body {
   background-image: url('background.png');
-  background-size: cover;
+  background-size: 1920px 1080px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   height: 100vh;
   margin: 0;
   font-family: 'BodyFont', sans-serif;
