@@ -37,7 +37,7 @@
 
 .flex-container {
   display: flex;
-  gap: 40px; 
+  gap: 80px; 
   margin-bottom: 40px;
   justify-content: flex-start;
   margin-left: 120px;
