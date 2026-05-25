@@ -107,7 +107,7 @@ a {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 300px;
 }
 
 .navbar li {
