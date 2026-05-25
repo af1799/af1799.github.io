@@ -100,13 +100,18 @@ a {
 }
 
 .navbar {
-  list-style-type: none;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 400px;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 60px;
+  padding: 0 80px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 30px;
 }
 
 .navbar li {
