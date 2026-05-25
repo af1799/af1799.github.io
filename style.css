@@ -103,12 +103,10 @@ a {
 .navbar {
   list-style-type: none;
   padding: 0;
+  margin: 60px 0 20px 0;
   display: flex;
   justify-content: center;
   gap: 400px;
-  position: relative;
-  top: 30px;
-  margin: 0;
 }
 
 .navbar li {
