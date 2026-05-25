@@ -102,11 +102,12 @@ a {
 
 .navbar {
   list-style-type: none;
+  margin-top: 40px;
   margin-bottom: 20px;
   padding: 0;
-  overflow: hidden;
-  display: flex; 
+  display: flex;
   justify-content: center;
+  gap: 40px;
 }
 
 .navbar li {
