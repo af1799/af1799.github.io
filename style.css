@@ -116,10 +116,15 @@ a {
   margin-right: auto;
 }
 
-.nav-left,
+.nav-left{
+  display: flex;
+  gap: 20px;
+  margin-left: 100px;
+}
+
 .nav-right {
   display: flex;
-  gap: 20px; /* small separation between tabs */
+  gap: 20px;
 }
 
 .navbar li {
