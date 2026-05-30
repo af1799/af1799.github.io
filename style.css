@@ -118,13 +118,13 @@ a {
 
 .nav-left{
   display: flex;
-  gap: 40px;
-  margin-left: 60px;
+  gap: 100px;
+  margin-left: 50px;
 }
 
 .nav-right {
   display: flex;
-  gap: 40px;
+  gap: 100px;
 }
 
 .navbar li {
