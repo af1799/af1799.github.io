@@ -125,6 +125,7 @@ a {
 .nav-right {
   display: flex;
   gap: 80px;
+  margin-right: 5px;
 }
 
 .navbar li {
