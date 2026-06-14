@@ -148,3 +148,14 @@ a {
 .navbar li a:hover {
   color: #7dd3fc;
 }
+
+.arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow a:hover {
+  color: #7dd3fc;
+}
