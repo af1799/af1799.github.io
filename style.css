@@ -149,18 +149,18 @@ a {
   color: #7dd3fc;
 }
 
-.arrow {
+.right-arrow {
   position: absolute;
   right: 60px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.arrow img {
+.right-arrow img {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.arrow a:hover img {
+.right-arrow a:hover img {
   transform: translateX(-3px);
   filter: brightness(1.3);
 }
