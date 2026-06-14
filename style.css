@@ -156,6 +156,11 @@ a {
   transform: translateY(-50%);
 }
 
-.arrow a:hover {
-  color: #7dd3fc;
+.arrow img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.arrow a:hover img {
+  transform: translateX(-3px);
+  filter: brightness(1.3);
 }
