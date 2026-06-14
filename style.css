@@ -164,3 +164,19 @@ a {
   transform: translateX(-3px);
   filter: brightness(1.3);
 }
+
+.left-arrow {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow img {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.left-arrow a:hover img {
+  transform: translateX(-3px);
+  filter: brightness(1.3);
+}
