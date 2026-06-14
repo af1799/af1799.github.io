@@ -72,7 +72,7 @@ body {
   background-attachment: fixed;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  height: 100vh;
+  height: auto;
   margin: 0;
   font-family: 'BodyFont', sans-serif;
   font-size: 25px;
