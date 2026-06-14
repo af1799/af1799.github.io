@@ -151,7 +151,7 @@ a {
 
 .arrow {
   position: absolute;
-  right: 40px;
+  right: 60px;
   top: 50%;
   transform: translateY(-50%);
 }
