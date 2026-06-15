@@ -151,7 +151,7 @@ a {
 
 .right-arrow {
   position: absolute;
-  left: 800px;
+  left: 750px;
   top: 55%;
   transform: translateY(-50%);
 }
@@ -169,7 +169,7 @@ a {
 
 .left-arrow {
   position: absolute;
-  right: 100px;
+  right: 750px;
   top: 55%;
   transform: translateY(-50%);
 }
