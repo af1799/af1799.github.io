@@ -158,7 +158,6 @@ a {
 
 .right-arrow img {
   transition: transform 0.2s ease, filter 0.2s ease;
-  transform: scale(1.5);
 }
 
 .right-arrow a:hover img {
@@ -175,7 +174,6 @@ a {
 
 .left-arrow img {
   transition: transform 0.2s ease, filter 0.2s ease;
-  transform: scale(1.5);
 }
 
 .left-arrow a:hover img {
