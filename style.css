@@ -181,7 +181,7 @@ a {
   filter: brightness(1.3);
 }
 
-.journal-image {
+.journal-image img {
   width: 100%;
   height: auto;
   display: block;
