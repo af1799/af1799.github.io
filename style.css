@@ -42,6 +42,10 @@ ul {
   margin-bottom: clamp(50px, 8vw, 120px);
 }
 
+.bump-up {
+  margin-bottom: clamp(50px, 8vw, 120px);
+}
+
 /* BODY */
 body {
   background-image: url('images/background.png');
