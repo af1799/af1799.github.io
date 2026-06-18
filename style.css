@@ -162,11 +162,14 @@ a {
   left: 770px;
   top: 55%;
   transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
 }
 
+
 .right-arrow img {
-  transition: transform 0.2s ease, filter 0.2s ease;
-  transform: scale(0.2);
+  width: 100%;
+  height: auto;
 }
 
 .right-arrow a:hover img {
