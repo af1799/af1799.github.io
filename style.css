@@ -85,11 +85,11 @@ body {
 .nav-left,
 .nav-right {
   display: flex;
-  gap: clamp(15px, 3vw, 80px);
+  gap: clamp(25px, 4vw, 100px);
 }
 
 .nav-left {
-  margin-left: clamp(5px, 1.5vw, 30px);
+  margin-left: clamp(2px, 1vw, 20px);
 }
 
 .nav-right {
