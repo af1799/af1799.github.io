@@ -159,3 +159,7 @@ a {
   margin-top: 50px; 
   margin-left: 100px; 
 }
+
+.right-page {
+  background-image: url("images/background-right-page.png");
+}
