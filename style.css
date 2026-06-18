@@ -30,7 +30,6 @@ ul {
 .flex-container {
   display: flex;
   gap: clamp(35px, 7vw, 110px);
-  margin-bottom: clamp(50px, 8vw, 120px);
   justify-content: flex-start;
   margin-left: clamp(10px, 5vw, 100px);
   align-items: flex-start;
@@ -39,11 +38,10 @@ ul {
 .flex-child {
   flex: 0 0 min(42%, 600px);
   max-width: 42%;
-  margin-bottom: clamp(50px, 8vw, 120px);
 }
 
 .bump-up {
-  margin-bottom: clamp(50px, 8vw, 120px);
+  margin-top: clamp(-20px, -2vw, 0px);
 }
 
 /* BODY */
