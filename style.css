@@ -165,7 +165,8 @@ a {
   bottom: 0;
   right: 0;
 
-  width: clamp(120px, 15vw, 300px);
+  width: clamp(80px, 10vw, 190px);
+
   z-index: 100;
 }
 
@@ -173,16 +174,4 @@ a {
   width: 100%;
   height: auto;
   display: block;
-  pointer-events: none;
-}
-
-.page-corner-link {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-  width: 25%;
-  height: 25%;
-
-  z-index: 101;
 }
