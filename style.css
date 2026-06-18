@@ -85,15 +85,15 @@ body {
 .nav-left,
 .nav-right {
   display: flex;
-  gap: clamp(25px, 4vw, 100px);
+  gap: clamp(30px, 5vw, 120px);
 }
 
 .nav-left {
-  margin-left: clamp(2px, 1vw, 20px);
+ margin-left: clamp(0px, 0.5vw, 15px);
 }
 
 .nav-right {
-  margin-right: clamp(10px, 3vw, 40px);
+  margin-right: clamp(15px, 4vw, 50px);
 }
 
 .navbar li {
