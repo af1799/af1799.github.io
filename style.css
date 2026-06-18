@@ -86,7 +86,7 @@ body {
 }
 
 .nav-left {
-  margin-left: clamp(2px, 1vw, 15px);
+  margin-left: clamp(20px, 3vw, 60px);
 }
 
 .nav-right {
