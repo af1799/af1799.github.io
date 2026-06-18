@@ -109,7 +109,7 @@ body {
 }
 
 /* PAGE CORNER */
-.page-corner {
+.left-page-corner {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -121,7 +121,20 @@ body {
   z-index: 100;
 }
 
-.page-corner img {
+.right-page-corner {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: clamp(80px, 10vw, 190px);
+
+  transform: translate(57%, 70%);
+
+  z-index: 100;
+}
+
+.left-page-corner img,
+.right-page-corner img {
   width: 100%;
   height: auto;
   display: block;
