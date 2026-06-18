@@ -162,4 +162,8 @@ a {
 
 .right-page {
   background-image: url("images/background-right-page.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
