@@ -30,7 +30,7 @@ ul {
 .flex-container {
   display: flex;
   gap: clamp(35px, 7vw, 110px);
-  margin-bottom: 40px;
+  margin-bottom: clamp(20px, 4vw, 60px);
   justify-content: flex-start;
   margin-left: clamp(10px, 5vw, 100px);
   align-items: flex-start;
@@ -116,7 +116,7 @@ body {
 
   width: clamp(80px, 10vw, 190px);
 
-  transform: translate(-75%, -50%);
+  transform: translate(-50%, -75%);
 
   z-index: 100;
 }
