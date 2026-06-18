@@ -116,7 +116,7 @@ body {
 
   width: clamp(80px, 10vw, 190px);
 
-  transform: translate(-55%, -70%);
+  transform: translate(-57%, -70%);
 
   z-index: 100;
 }
