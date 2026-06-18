@@ -159,3 +159,23 @@ a {
   margin-top: 50px; 
   margin-left: 100px; 
 }
+
+.page-corner-art {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: clamp(120px, 15vw, 300px);
+  height: clamp(120px, 15vw, 300px);
+
+  pointer-events: none;
+}
+
+.page-corner-link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: clamp(40px, 5vw, 80px);
+  height: clamp(40px, 5vw, 80px);
+}
