@@ -82,18 +82,16 @@ body {
   z-index: 10;
 }
 
-.nav-left,
-.nav-right {
-  display: flex;
-  gap: clamp(30px, 5vw, 120px);
-}
-
 .nav-left {
  margin-left: clamp(0px, 0.5vw, 15px);
+  display: flex;
+  gap: clamp(40px, 6vw, 140px);
 }
 
 .nav-right {
   margin-right: clamp(10px, 3vw, 40px);
+  display: flex;
+  gap: clamp(30px, 5vw, 120px);
 }
 
 .navbar li {
