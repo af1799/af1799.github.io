@@ -160,22 +160,29 @@ a {
   margin-left: 100px; 
 }
 
-.page-corner-art {
+.page-corner {
   position: fixed;
   bottom: 0;
   right: 0;
 
   width: clamp(120px, 15vw, 300px);
-  height: clamp(120px, 15vw, 300px);
+  z-index: 100;
+}
 
+.page-corner img {
+  width: 100%;
+  height: auto;
+  display: block;
   pointer-events: none;
 }
 
 .page-corner-link {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
 
-  width: clamp(40px, 5vw, 80px);
-  height: clamp(40px, 5vw, 80px);
+  width: 25%;
+  height: 25%;
+
+  z-index: 101;
 }
