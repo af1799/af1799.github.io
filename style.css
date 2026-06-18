@@ -117,11 +117,11 @@ body {
 .left-page-corner {
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 0;
 
   width: clamp(80px, 10vw, 190px);
 
-  transform: translate(-57%, -70%);
+  transform: translate(57%, 70%);
 
   z-index: 100;
 }
@@ -133,7 +133,7 @@ body {
 
   width: clamp(80px, 10vw, 190px);
 
-  transform: translate(57%, 70%);
+  transform: translate(-57%, -70%);
 
   z-index: 100;
 }
