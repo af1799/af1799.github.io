@@ -178,23 +178,28 @@ ul {
   margin: calc(3 * var(--u)) 0 0;
 }
 
-/* page corners sit at the bottom of the stage (not the window) */
+/* ---------- PAGE CORNERS ----------
+   Placed by stage coordinates (top-left of each image, in u), not by the
+   bottom of the body, so they stay put when content height changes.
+   These are estimates: nudge one value at a time (1u is about 1% of the
+   book's width). Too low -> reduce top. Too far right -> reduce left.
+   Requires both divs to be direct children of <body>. */
 .left-page-corner,
 .right-page-corner {
   position: absolute;
-  bottom: 0;
   width: calc(10 * var(--u));
   z-index: 100;
-}
-
-.left-page-corner {
-  left: 0;
-  transform: translate(57%, -70%);
+  pointer-events: none;
 }
 
 .right-page-corner {
-  right: 0;
-  transform: translate(-57%, -70%);
+  left: calc(83.5 * var(--u));
+  top:  calc(38.9 * var(--u));
+}
+
+.left-page-corner {
+  left: calc(3.9 * var(--u));
+  top:  calc(38.6 * var(--u));
 }
 
 .left-page-corner img,
@@ -275,9 +280,15 @@ ul {
     padding-left: 20px;
   }
 
+  /* on phones the corners pin to the screen's bottom corners */
   .left-page-corner,
   .right-page-corner {
     position: fixed;
+    top: auto;
+    bottom: 0;
     width: 60px;
   }
+
+  .left-page-corner  { left: 0; }
+  .right-page-corner { left: auto; right: 0; }
 }
