@@ -217,15 +217,19 @@ ul {
   image-rendering: auto;
 }
 
-/* ---------- PHONE: the book can't fit, so stack everything ---------- */
-@media (max-width: 600px) {
+/* ---------- NARROW WINDOWS & PHONES (900px and under) ----------
+   The book art is too small to hold the text at this size, so drop it and
+   rebuild the same look from CSS: dark brown background, a cream "page"
+   card with the book's grey / dark-red / black border, and brown nav tabs.
+   The page-curl links sit in the card's bottom corners. */
+@media (max-width: 900px) {
   body {
     width: 100%;
     min-height: 100vh;
-    padding: 0 16px 30px;
+    padding: 0 18px 30px;
+    display: flow-root;            /* contains the floated page curls */
     font-size: 16px;
-    background-size: cover;
-    background-attachment: fixed;
+    background-image: none;        /* no book art here */
   }
 
   .navbar {
@@ -233,7 +237,8 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    gap: 8px;
+    margin: 20px 0 22px;
   }
 
   .nav-left,
@@ -250,21 +255,28 @@ ul {
   }
 
   .navbar li a {
-    padding: 8px 10px;
+    padding: 8px 14px;
+    background: #6b4c2e;           /* tab brown from the art */
+    border: 3px solid #000;
   }
 
+  /* the page */
   .flex-container {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 24px;
-    padding-top: 40px;
+    padding: 28px 22px 64px;       /* extra bottom room for the curls */
+    background: #fdf5dc;           /* page cream from the art */
+    border: 6px solid #a0a0a0;
+    box-shadow: 0 0 0 6px #4f1810, 0 0 0 12px #000;
   }
 
   .flex-child,
   .flex-child + .flex-child {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
+    margin: 0 auto;
     padding: 0;
   }
 
@@ -273,32 +285,34 @@ ul {
   }
 
   .video-container {
-    margin-top: 30px;
+    margin-top: 0;
   }
 
   .journal-image img {
     width: 100%;
     max-height: none;
-    margin: 20px 0 0;
+    margin: 0;
   }
 
   h2 {
     font-size: 24px;
+    padding-top: 0;
   }
 
   ul {
     padding-left: 20px;
   }
 
-  /* on phones the corners pin to the screen's bottom corners */
+  /* curls: pulled up so they overlap the card's bottom corners */
   .left-page-corner,
   .right-page-corner {
-    position: fixed;
+    position: relative;
     top: auto;
-    bottom: 0;
-    width: 60px;
+    width: 56px;
+    margin-top: -52px;
+    z-index: 5;
   }
 
-  .left-page-corner  { left: 0; }
-  .right-page-corner { left: auto; right: 0; }
+  .left-page-corner  { float: left;  left: auto; }
+  .right-page-corner { float: right; left: auto; }
 }
