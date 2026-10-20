@@ -187,9 +187,16 @@ ul {
 .left-page-corner,
 .right-page-corner {
   position: absolute;
+  display: block;
   width: calc(10 * var(--u));
   z-index: 100;
-  pointer-events: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.left-page-corner:hover,
+.right-page-corner:hover {
+  filter: brightness(1.08);
 }
 
 .right-page-corner {
@@ -207,6 +214,9 @@ ul {
   display: block;
   width: 100%;
   height: auto;
+  /* body sets pixelated, which is inherited; the curl art is smooth, so
+     it needs normal scaling or its edges look jagged against the page */
+  image-rendering: auto;
 }
 
 /* ---------- PHONE: the book can't fit, so stack everything ---------- */
