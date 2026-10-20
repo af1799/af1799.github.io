@@ -1,3 +1,24 @@
+/* =====================================================================
+   HOW THIS WORKS
+   The book art is treated as a "stage" with a fixed aspect ratio.
+   --u is 1% of the stage width. Everything (nav, columns, text, corners)
+   is sized and positioned in --u, so it scales together with the art at
+   any window size, and nothing can drift out of alignment.
+
+   YOU MAY NEED TO EDIT:
+   --ar     = background.png width / height  (e.g. 2400x1536 -> 1.5625)
+   --edge   = the dark brown at the top/bottom of the art (eyedrop it)
+   ===================================================================== */
+
+:root {
+  --ar: 1.56;
+  --edge: #3a2a0a;
+
+  /* "contain": the whole book always fits on screen (side bars on very wide
+     monitors are filled with --edge). To fill the full width instead and let
+     the page scroll vertically on wide monitors, change this to: 1vw */
+  --u: min(1vw, calc(1vh * var(--ar)));
+}
 
 * {
   box-sizing: border-box;
@@ -5,29 +26,30 @@
 
 html {
   min-height: 100%;
+  background-color: var(--edge);
+  background-image: url('images/background.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: calc(100 * var(--u)) auto;
+
+  image-rendering: crisp-edges;   /* fallback first */
+  image-rendering: pixelated;     /* wins where supported */
 }
 
+/* body IS the stage: same width as the art, centered */
 body {
-  background-image: url('images/background.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-
-  margin: 0;
-  padding: 0 4vw 4vw;
+  position: relative;
+  width: calc(100 * var(--u));
+  min-height: calc(100 * var(--u) / var(--ar));
+  margin: 0 auto;
+  padding: 0 0 calc(4 * var(--u));
 
   font-family: 'BodyFont', sans-serif;
-  font-size: clamp(16px, 1.6vw, 25px);
+  font-size: max(13px, calc(1.55 * var(--u)));
   line-height: 1.5;
 
   overflow-x: hidden;
-  overflow-y: auto;
 }
-
 
 @font-face {
   font-family: 'HeaderFont';
@@ -41,8 +63,8 @@ body {
 
 h2 {
   font-family: 'HeaderFont', serif;
-  font-size: clamp(24px, 2.3vw, 35px);
-  letter-spacing: 2px;
+  font-size: max(16px, calc(2.3 * var(--u)));
+  letter-spacing: 0.07em;
   line-height: 1.15;
   margin-top: 0;
   padding-top: 0.5em;
@@ -55,7 +77,7 @@ a {
 
 ul {
   margin: 0;
-  padding-left: clamp(10px, 2vw, 20px);
+  padding-left: calc(2 * var(--u));
 }
 
 .title-container {
@@ -65,39 +87,33 @@ ul {
   margin: 0 auto;
 }
 
+/* ---------- NAV: each label is centered on a tab in the art ---------- */
 .navbar {
   list-style: none;
-  margin: 4vh auto 20px;
+  margin: 0;
   padding: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3vw;
-
-  width: 90%;
-  max-width: 1400px;
-
-  position: relative;
+  height: 0;
   z-index: 10;
 }
 
 .nav-left,
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: clamp(12px, 3vw, 60px);
+  display: contents;   /* lets each <li> position against the body/stage */
   margin: 0;
+  padding: 0;
 }
 
 .navbar li {
   list-style: none;
+  position: absolute;
+  top: calc(8.7 * var(--u));          /* vertical center of the tabs */
+  transform: translate(-50%, -50%);
 }
 
 .navbar li a {
   display: block;
   color: white;
-  padding: 14px 20px;
+  padding: 0.5em 1em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -106,33 +122,42 @@ ul {
   color: #7dd3fc;
 }
 
+/* tab centers, as a % of stage width */
+.nav-left  li:nth-child(1) { left: 16.2%; }  /* Home */
+.nav-left  li:nth-child(2) { left: 35.1%; }  /* Projects */
+.nav-right li:nth-child(1) { left: 67.1%; }  /* Dev Journal */
+.nav-right li:nth-child(2) { left: 85.9%; }  /* Writing */
+
+/* ---------- CONTENT: one column per book page ---------- */
 .flex-container {
   display: flex;
-  gap: clamp(20px, 4vw, 60px);
-  justify-content: center;
   align-items: flex-start;
+  gap: 0;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-top: clamp(40px, 8vh, 120px);
+  margin: 0;
+  padding-top: calc(12.5 * var(--u));  /* starts at the top of the cream pages */
 }
 
 .flex-child {
-  flex: 1 1 0;
+  flex: 0 0 50%;
   min-width: 0;
-  max-width: 600px;
-  padding: 0 clamp(16px, 3vw, 48px);
+  max-width: none;
+  padding: 0 calc(4.2 * var(--u)) 0 calc(4.8 * var(--u));   /* left page */
+}
+
+.flex-child + .flex-child {
+  padding: 0 calc(3.4 * var(--u)) 0 calc(6 * var(--u));     /* right page, clears the gutter */
 }
 
 .bump-up {
-  margin-top: clamp(-20px, -2vw, 0px);
+  margin-top: calc(-1 * var(--u));
 }
 
 .video-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  margin-top: clamp(30px, 5vw, 90px);
+  margin-top: calc(4 * var(--u));
   overflow: hidden;
 }
 
@@ -149,29 +174,26 @@ ul {
   width: 100%;
   max-width: 100%;
   height: auto;
-  margin: clamp(20px, 5vw, 50px) 0 0;
+  margin: calc(3 * var(--u)) 0 0;
+}
+
+/* page corners sit at the bottom of the stage (not the window) */
+.left-page-corner,
+.right-page-corner {
+  position: absolute;
+  bottom: 0;
+  width: calc(10 * var(--u));
+  z-index: 100;
 }
 
 .left-page-corner {
-  position: fixed;
-  bottom: 0;
   left: 0;
-
-  width: clamp(60px, 10vw, 190px);
   transform: translate(57%, -70%);
-
-  z-index: 100;
 }
 
 .right-page-corner {
-  position: fixed;
-  bottom: 0;
   right: 0;
-
-  width: clamp(60px, 10vw, 190px);
   transform: translate(-57%, -70%);
-
-  z-index: 100;
 }
 
 .left-page-corner img,
@@ -181,55 +203,39 @@ ul {
   height: auto;
 }
 
-@media (max-width: 900px) {
-  body {
-    padding-right: 3vw;
-    padding-left: 3vw;
-    font-size: clamp(16px, 2vw, 20px);
-  }
-
-  .navbar {
-  margin: 2vh auto 10px;
-  width: 80%;
-  max-width: 1100px;
-}
-
-  .nav-left,
-  .nav-right {
-    gap: clamp(8px, 1.5vw, 16px);
-  }
-
-  .navbar li a {
-    padding: 10px 12px;
-  }
-
-  .flex-container {
-    gap: 3vw;
-  }
-
-  h2 {
-    font-size: clamp(22px, 3vw, 30px);
-  }
-}
-
+/* ---------- PHONE: the book can't fit, so stack everything ---------- */
 @media (max-width: 600px) {
-  body {
-    padding: 0 16px 30px;
+  html {
+    background-size: cover;
     background-attachment: scroll;
   }
 
+  body {
+    width: 100%;
+    min-height: 0;
+    padding: 0 16px 30px;
+    font-size: 16px;
+  }
+
   .navbar {
+    height: auto;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     margin-top: 20px;
   }
 
   .nav-left,
   .nav-right {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
+  }
+
+  .navbar li {
+    position: static;
+    transform: none;
   }
 
   .navbar li a {
@@ -240,28 +246,40 @@ ul {
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    padding-top: 40px;
   }
 
-  .flex-child {
+  .flex-child,
+  .flex-child + .flex-child {
     flex: 1 1 auto;
     width: 100%;
     max-width: 600px;
+    padding: 0;
   }
 
   .bump-up {
     margin-top: 0;
   }
 
-  .title-container {
-    width: 100%;
+  .video-container {
+    margin-top: 30px;
   }
 
   .journal-image img {
     margin-top: 20px;
   }
 
+  h2 {
+    font-size: 24px;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
   .left-page-corner,
   .right-page-corner {
+    position: fixed;
     width: 60px;
   }
 }
