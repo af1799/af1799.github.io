@@ -170,12 +170,16 @@ ul {
   border: 0;
 }
 
+/* The cover is a tall portrait image, so it's limited by height to fit the
+   page (cream runs to about 47u), and centered in the right page column. */
 .journal-image img {
   display: block;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   height: auto;
-  margin: calc(3 * var(--u)) 0 0;
+  max-height: calc(28 * var(--u));
+  margin: calc(3 * var(--u)) auto 0;
+  image-rendering: auto;   /* body is pixelated; this is a photo/painting */
 }
 
 /* ---------- PAGE CORNERS ----------
@@ -195,7 +199,7 @@ ul {
 
 .right-page-corner {
   left: calc(84.25 * var(--u));
-  top:  calc(39.8 * var(--u));
+  top:  calc(39.6 * var(--u));
 }
 
 .left-page-corner {
@@ -273,7 +277,9 @@ ul {
   }
 
   .journal-image img {
-    margin-top: 20px;
+    width: 100%;
+    max-height: none;
+    margin: 20px 0 0;
   }
 
   h2 {
