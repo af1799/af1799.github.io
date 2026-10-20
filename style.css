@@ -191,12 +191,6 @@ ul {
   width: calc(10 * var(--u));
   z-index: 100;
   cursor: pointer;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-
-.left-page-corner:hover,
-.right-page-corner:hover {
-  filter: brightness(1.08);
 }
 
 .right-page-corner {
