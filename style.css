@@ -1,22 +1,19 @@
 /* =====================================================================
    HOW THIS WORKS
-   The book art is treated as a "stage" with a fixed aspect ratio.
-   --u is 1% of the stage width. Everything (nav, columns, text, corners)
-   is sized and positioned in --u, so it scales together with the art at
-   any window size, and nothing can drift out of alignment.
-
-   YOU MAY NEED TO EDIT:
-   --ar     = background.png width / height  (e.g. 2400x1536 -> 1.5625)
-   --edge   = the dark brown at the top/bottom of the art (eyedrop it)
+   background.png is 1920x1080 (ratio 16:9). The page is a "stage" the
+   same shape as the art, and --u is 1% of the stage's width. Every
+   position below was measured from the art's actual pixels and is written
+   in --u (e.g. 20.83u = 400px / 1920px), so the nav, text and art scale
+   together at any window size.
    ===================================================================== */
 
 :root {
-  --ar: 1.56;
-  --edge: #3a2a0a;
+  --ar: 1.7778;        /* 1920 / 1080 */
+  --edge: #3b2b00;     /* dark brown at the art's border (sampled from the PNG) */
 
-  /* "contain": the whole book always fits on screen (side bars on very wide
-     monitors are filled with --edge). To fill the full width instead and let
-     the page scroll vertically on wide monitors, change this to: 1vw */
+  /* "contain": the whole book always fits on screen; extra width on very wide
+     monitors is filled with --edge. To fill the full width and scroll
+     vertically on wide monitors instead, change this line to:  --u: 1vw; */
   --u: min(1vw, calc(1vh * var(--ar)));
 }
 
@@ -26,17 +23,10 @@
 
 html {
   min-height: 100%;
-  background-color: var(--edge);
-  background-image: url('images/background.png');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: calc(100 * var(--u)) auto;
-
-  image-rendering: crisp-edges;   /* fallback first */
-  image-rendering: pixelated;     /* wins where supported */
+  background-color: var(--edge);   /* fills the sides; also stops body's image becoming the page background */
 }
 
-/* body IS the stage: same width as the art, centered */
+/* body IS the stage: same width as the art, centered, art drawn on it */
 body {
   position: relative;
   width: calc(100 * var(--u));
@@ -44,8 +34,17 @@ body {
   margin: 0 auto;
   padding: 0 0 calc(4 * var(--u));
 
+  background-color: var(--edge);
+  background-image: url('images/background.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% auto;
+
+  image-rendering: crisp-edges;   /* fallback first */
+  image-rendering: pixelated;     /* wins where supported */
+
   font-family: 'BodyFont', sans-serif;
-  font-size: max(13px, calc(1.55 * var(--u)));
+  font-size: max(13px, calc(1.4 * var(--u)));
   line-height: 1.5;
 
   overflow-x: hidden;
@@ -63,7 +62,7 @@ body {
 
 h2 {
   font-family: 'HeaderFont', serif;
-  font-size: max(16px, calc(2.3 * var(--u)));
+  font-size: max(16px, calc(2.1 * var(--u)));
   letter-spacing: 0.07em;
   line-height: 1.15;
   margin-top: 0;
@@ -87,7 +86,7 @@ ul {
   margin: 0 auto;
 }
 
-/* ---------- NAV: each label is centered on a tab in the art ---------- */
+/* ---------- NAV: each label is centered on its tab in the art ---------- */
 .navbar {
   list-style: none;
   margin: 0;
@@ -106,7 +105,7 @@ ul {
 .navbar li {
   list-style: none;
   position: absolute;
-  top: calc(8.7 * var(--u));          /* vertical center of the tabs */
+  top: calc(7.8 * var(--u));          /* tab center: y=150 of 1920 */
   transform: translate(-50%, -50%);
 }
 
@@ -122,31 +121,33 @@ ul {
   color: #7dd3fc;
 }
 
-/* tab centers, as a % of stage width */
-.nav-left  li:nth-child(1) { left: 16.2%; }  /* Home */
-.nav-left  li:nth-child(2) { left: 35.1%; }  /* Projects */
-.nav-right li:nth-child(1) { left: 67.1%; }  /* Dev Journal */
-.nav-right li:nth-child(2) { left: 85.9%; }  /* Writing */
+/* tab centers, as a % of stage width (x = 400, 703, 1216, 1519 of 1920) */
+.nav-left  li:nth-child(1) { left: 20.83%; }  /* Home */
+.nav-left  li:nth-child(2) { left: 36.61%; }  /* Projects */
+.nav-right li:nth-child(1) { left: 63.33%; }  /* Dev Journal */
+.nav-right li:nth-child(2) { left: 79.11%; }  /* Writing */
 
-/* ---------- CONTENT: one column per book page ---------- */
+/* ---------- CONTENT: one column per book page ----------
+   left page text:  9.5u to 47u     (cream is 7.6u to 49u)
+   right page text: 52.5u to 90u    (cream is 51u to 92.3u)  */
 .flex-container {
   display: flex;
   align-items: flex-start;
   gap: 0;
   width: 100%;
   margin: 0;
-  padding-top: calc(12.5 * var(--u));  /* starts at the top of the cream pages */
+  padding-top: calc(14.6 * var(--u));  /* heading starts below the page-corner pixels */
 }
 
 .flex-child {
   flex: 0 0 50%;
   min-width: 0;
   max-width: none;
-  padding: 0 calc(4.2 * var(--u)) 0 calc(4.8 * var(--u));   /* left page */
+  padding: 0 calc(3 * var(--u)) 0 calc(9.5 * var(--u));      /* left page */
 }
 
 .flex-child + .flex-child {
-  padding: 0 calc(3.4 * var(--u)) 0 calc(6 * var(--u));     /* right page, clears the gutter */
+  padding: 0 calc(10 * var(--u)) 0 calc(2.5 * var(--u));     /* right page */
 }
 
 .bump-up {
@@ -205,16 +206,13 @@ ul {
 
 /* ---------- PHONE: the book can't fit, so stack everything ---------- */
 @media (max-width: 600px) {
-  html {
-    background-size: cover;
-    background-attachment: scroll;
-  }
-
   body {
     width: 100%;
-    min-height: 0;
+    min-height: 100vh;
     padding: 0 16px 30px;
     font-size: 16px;
+    background-size: cover;
+    background-attachment: fixed;
   }
 
   .navbar {
